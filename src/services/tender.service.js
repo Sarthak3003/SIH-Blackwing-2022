@@ -1,4 +1,5 @@
 const Tender = require('../models/tender.schema');
+const cloudinary = require('./../utilities/cloudinary');
 
 const tenderList = async (query, pageNo, pageSize) => {
     let result, tenders;
@@ -71,6 +72,23 @@ const tenderById = async (req) => {
 const tenderCreate = async (req) => {
     let result;
     const newTender = new Tender(req.body);
+
+    let workdocuments = []; // push each object into array, & upload 1 by 1 
+    if (req.file) {
+        const result = await cloudinary.uploader.upload(req.file.path, {
+          public_id:
+          "tender-work-documents/" + currentUser._id,
+        });
+        const tenderdocument = {
+            path: req.file.path,
+            originalname : req.file.originalname,
+            filename : req.file.filename,
+            publicurl : result.secure_url,
+            cloudinary_id : result.public_id
+        }
+
+       updatedUser = await User.findByIdAndUpdate(id, {tenderdocument}, { new: true });
+    }
 
     await newTender.save();
 

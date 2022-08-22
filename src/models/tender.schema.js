@@ -212,7 +212,7 @@ const tenderSchema = new mongoose.Schema({
         required: false
     },
     publishingat: {
-        type: Date,
+        type: String,
         required: false
     },
     documentdownloaddate: {
@@ -244,7 +244,7 @@ const tenderSchema = new mongoose.Schema({
         required: false
     },
     prebidmeetingat: {
-        type: Date,
+        type: String,
         required: false
     },
     bidsubmissionstartdate: {
