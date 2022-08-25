@@ -15,6 +15,28 @@ const bidSchema = new mongoose.Schema({
             required: false
         }
     }],
+    boq: {
+        type: {
+            bidderOffer: [{
+                offeredmodel: {
+                    type: String,
+                    required: false
+                },
+                unitrate: {
+                    type: String,
+                    required: false
+                },
+                totalamount: {
+                    type: Number,
+                    required: false
+                },
+                warranty: {
+                    type: String,
+                    required: false
+                },
+            }]
+        }
+    },
     tenderid: {
         type: String,
         required: true
