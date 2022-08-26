@@ -36,7 +36,7 @@ const productById = async (req) => {
 
 const productCreate = async (req) => {
     let result;
-
+    console.log(req.file);
     let fileUrl;
     if (req.file) {
         fileUrl = await cloudinary.uploader.upload(req.file.path, {
