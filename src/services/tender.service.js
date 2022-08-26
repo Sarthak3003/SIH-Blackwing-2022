@@ -2,7 +2,7 @@ const { query } = require('express');
 const Bid = require('../models/bid.schema');
 const Tender = require('../models/tender.schema');
 const Staff = require('./../models/staff.schema');
-const axios = require('axios');
+const Bidder = require('./../models/bidder.schema');
 
 const tenderList = async (query, pageNo, pageSize) => {
     let result, tenders;
@@ -163,9 +163,11 @@ const getTenderBids = async (req) => {
     }
 
     for (let i = 0; i < bids.length; i++) {
+        let bidder = await Bidder.findById(bids[i].bidderid);
         let obj = {
             bidder_id: bids[i].bidderid,
-            bidder_offer: bids[i].boq
+            bidder_offer: bids[i].boq,
+            bidder: bidder
         };
         responses.push(obj);
     }
