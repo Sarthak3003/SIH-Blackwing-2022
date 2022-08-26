@@ -77,7 +77,7 @@ const tenderSchema = new mongoose.Schema({
                     type: Number,
                     required: false
                 },
-                preferredmodel: {
+                preferredmodels: {
                     type: String,
                     required: false
                 }

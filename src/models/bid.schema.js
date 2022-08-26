@@ -18,7 +18,7 @@ const bidSchema = new mongoose.Schema({
     boq: {
         type: {
             bidderOffer: [{
-                offeredmodel: {
+                offeredmodels: {
                     type: String,
                     required: false
                 },
